@@ -1,0 +1,33 @@
+
+<html>
+	<script   
+		src="https://code.jquery.com/jquery-2.2.3.min.js"   
+		integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   
+		crossorigin="anonymous">
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("#btnAuth").click(function(){
+				$.ajax({
+					url: "/auth",
+					method: "POST",
+					contentType: "application/json",
+					data: JSON.stringify({
+						"otp": $("#txtPassword").val()
+					})
+				}).done(function(data){
+						window.location = "index.html";
+					}).fail(function(jqXHR, text, error){
+
+					});
+			});
+
+		});
+	</script>
+	<body>
+		<h1>Please Authenticate</h1>
+		<input type="password" id="txtPassword"></input>
+		<button type="button" title="Authenticate" id="btnAuth">Authenticate</button>
+	</body>
+</html>

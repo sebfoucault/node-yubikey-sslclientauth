@@ -1,0 +1,26 @@
+
+<html>
+	<script   
+		src="https://code.jquery.com/jquery-2.2.3.min.js"   
+		integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   
+		crossorigin="anonymous">
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				$.ajax({
+					url: "/ping",
+					method: "POST",
+					contentType: "application/json"
+				}).done(function(data){
+					// NOP	
+				}).fail(function(jqXHR, text, error){
+					if (jqXHR.status == 401) {
+						window.location = "auth.html";
+					}
+				});
+		});
+	</script>
+	<body>
+		<h1>Welcome</h1>
+	</body>
+</html>
